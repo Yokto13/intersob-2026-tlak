@@ -4,6 +4,16 @@ Local web app for scoring *Tlak* at the Intersob 2026.
 
 ## Run
 
+Install uv
+
+```
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+```
+```
+
+then run:
+
 ```
 uv run python app.py
 ```
