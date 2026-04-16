@@ -1,0 +1,15 @@
+# Generated measurement logs
+data/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Virtual env
+.venv/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store

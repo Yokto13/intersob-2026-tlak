@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Intersob 2026 — Měření tlaku</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main>
+        <h1>Intersob 2026 — Měření tlaku</h1>
+
+        <div class="controls">
+            <label class="team-field">
+                <span>Tým</span>
+                <select id="team">
+                    <option value="">— vyberte tým —</option>
+                    {% for t in teams %}
+                    <option value="{{ t }}">{{ t }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <span id="status" class="status"></span>
+            <div class="points-box">
+                <span class="points-label">Body</span>
+                <span class="points-value" id="points">0</span>
+            </div>
+        </div>
+
+        <div class="checkpoints">
+            <label class="checkpoint">
+                <input type="checkbox" id="check-prisli">
+                přišli na stanoviště
+            </label>
+            <label class="checkpoint">
+                <input type="checkbox" id="check-zmerili">
+                změřili tlak
+            </label>
+        </div>
+
+        <div class="diff-display">
+            Rozdíl max–min středního tlaku: <strong id="diff-value">—</strong>
+        </div>
+
+        <fieldset id="table-fieldset" disabled>
+        <table id="measurements">
+            <thead>
+                <tr>
+                    <th class="num">#</th>
+                    {% for c in columns %}
+                    <th>{{ c }}</th>
+                    {% endfor %}
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+        </table>
+        </fieldset>
+    </main>
+
+    <script>
+        window.COLUMNS = {{ columns|tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
