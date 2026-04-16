@@ -11,7 +11,7 @@ app = Flask(__name__)
 DATA_DIR = Path(__file__).parent / "data"
 DATA_DIR.mkdir(exist_ok=True)
 
-COLUMNS = ["systolický", "diastolický", "střední"]
+COLUMNS = ["systolický", "diastolický", "střední", "poznámka"]
 
 TEAMS = [
     "BigB's",

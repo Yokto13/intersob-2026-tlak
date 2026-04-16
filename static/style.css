@@ -193,7 +193,7 @@ td.num {
     padding-right: 0.5rem;
 }
 
-td input[type="number"] {
+td input {
     width: 100%;
     padding: 0.5rem 0.5rem;
     font-size: 1rem;
@@ -203,11 +203,11 @@ td input[type="number"] {
     font-variant-numeric: tabular-nums;
 }
 
-td input[type="number"]:hover {
+td input:hover {
     background: #fafafa;
 }
 
-td input[type="number"]:focus {
+td input:focus {
     outline: none;
     border-color: #4a90e2;
     background: #fff;

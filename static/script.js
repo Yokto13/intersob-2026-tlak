@@ -8,6 +8,7 @@ const checkZmerili = document.getElementById('check-zmerili');
 const pointsEl = document.getElementById('points');
 
 const COMPUTED = new Set(['střední']);
+const TEXT_COLS = new Set(['poznámka']);
 const rowInputs = new WeakMap(); // row object → { colName: HTMLInputElement }
 
 let rows = [];
@@ -87,8 +88,12 @@ function createRowElement(row) {
     for (const c of COLUMNS) {
         const td = document.createElement('td');
         const inp = document.createElement('input');
-        inp.type = 'number';
-        inp.inputMode = 'numeric';
+        if (TEXT_COLS.has(c)) {
+            inp.type = 'text';
+        } else {
+            inp.type = 'number';
+            inp.inputMode = 'numeric';
+        }
         inp.value = row[c];
 
         if (COMPUTED.has(c)) {
