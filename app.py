@@ -19,6 +19,7 @@ TEAMS = [
     "DELTA FORCE",
     "dementní ksíčkaři",
     "int(e) = r/S*o+0b",
+    "MAMA",
     "Martinkova Kryptografická Četa vol. III",
     "Mňamáci III",
     "Morek Dvorek",
