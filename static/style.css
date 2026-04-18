@@ -109,6 +109,36 @@ h1 {
     line-height: 1;
 }
 
+.timer-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.4rem 1.4rem;
+    border: 2px solid #4a90e2;
+    border-radius: 8px;
+    min-width: 5rem;
+}
+
+.timer-label {
+    font-size: 0.75rem;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.1rem;
+}
+
+.timer-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a56db;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.timer-box.warning .timer-value {
+    color: #c62828;
+}
+
 .checkpoints {
     display: flex;
     gap: 1rem;

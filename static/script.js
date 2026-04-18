@@ -6,6 +6,34 @@ const diffValue = document.getElementById('diff-value');
 const checkPrisli = document.getElementById('check-prisli');
 const checkZmerili = document.getElementById('check-zmerili');
 const pointsEl = document.getElementById('points');
+const timerEl = document.getElementById('timer');
+const timerBox = timerEl.parentElement;
+
+const TIMER_DURATION = 15 * 60;
+let timerRemaining = TIMER_DURATION;
+let timerInterval = null;
+
+function renderTimer() {
+    const r = Math.max(0, timerRemaining);
+    const m = Math.floor(r / 60);
+    const s = r % 60;
+    timerEl.textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+    timerBox.classList.toggle('warning', r <= 60);
+}
+
+function startTimer() {
+    timerRemaining = TIMER_DURATION;
+    renderTimer();
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+        timerRemaining -= 1;
+        renderTimer();
+        if (timerRemaining <= 0) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+        }
+    }, 1000);
+}
 
 const COMPUTED = new Set(['střední']);
 const TEXT_COLS = new Set(['poznámka']);
@@ -228,6 +256,7 @@ async function load(team) {
 teamInput.addEventListener('change', () => {
     updateTableEnabled();
     load(teamInput.value);
+    if (teamInput.value) startTimer();
 });
 
 checkPrisli.addEventListener('change', () => { updatePoints(); scheduleSave(); });
@@ -235,3 +264,4 @@ checkZmerili.addEventListener('change', () => { updatePoints(); scheduleSave(); 
 
 rows = [emptyRow()];
 render();
+renderTimer();
